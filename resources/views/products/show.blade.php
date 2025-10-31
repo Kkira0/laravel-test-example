@@ -17,5 +17,12 @@
         <button type="submit">Decrease Quantity</button>
     </form>
 
+     <form action="{{ route('products.destroy', $product) }}" method="POST" style="display:inline" onsubmit="return confirm('Are you sure you want to delete this product?');">
+        @csrf
+        @method('DELETE')
+        <button type="submit" style="color:red;">Delete Product</button>
+    </form>
+
+
     <a href="{{ route('products.index') }}">Back to list</a>
 </x-layout>

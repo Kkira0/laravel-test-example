@@ -10,7 +10,6 @@ class ProductControllerTest extends TestCase
 {
     use RefreshDatabase;
 
-    #[\PHPUnit\Framework\Attributes\Test]
     public function it_displays_products_index(): void
     {
         Product::factory()->count(5)->create();
@@ -22,7 +21,6 @@ class ProductControllerTest extends TestCase
         $response->assertSeeText(Product::first()->name);
     }
 
-    #[\PHPUnit\Framework\Attributes\Test]
     public function it_displays_create_form(): void
     {
         $response = $this->get(route('products.create'));
@@ -31,7 +29,6 @@ class ProductControllerTest extends TestCase
         $response->assertSee('Add New Product');
     }
 
-    #[\PHPUnit\Framework\Attributes\Test]
     public function it_can_store_a_product(): void
     {
         $data = Product::factory()->make()->toArray();
@@ -44,7 +41,6 @@ class ProductControllerTest extends TestCase
         ]);
     }
 
-    #[\PHPUnit\Framework\Attributes\Test]
     public function it_validates_required_fields_on_store(): void
     {
         $response = $this->post(route('products.store'), []);
@@ -52,7 +48,6 @@ class ProductControllerTest extends TestCase
         $response->assertSessionHasErrors(['name', 'quantity', 'status']);
     }
 
-    #[\PHPUnit\Framework\Attributes\Test]
     public function it_displays_edit_form(): void
     {
         $product = Product::factory()->create();
@@ -64,7 +59,6 @@ class ProductControllerTest extends TestCase
         $response->assertSee($product->name);
     }
 
-    #[\PHPUnit\Framework\Attributes\Test]
     public function it_can_delete_a_product(): void
     {
         $product = Product::factory()->create();
@@ -75,7 +69,6 @@ class ProductControllerTest extends TestCase
         $this->assertDatabaseMissing('products', ['id' => $product->id]);
     }
 
-    #[\PHPUnit\Framework\Attributes\Test]
     public function it_can_add_new_product(): void
     {
         $data = [
