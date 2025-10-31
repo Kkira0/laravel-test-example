@@ -85,7 +85,6 @@ class ProductControllerTest extends TestCase
         $this->assertDatabaseHas('products', ['name' => 'Test Product']);
     }
 
-    #[\PHPUnit\Framework\Attributes\Test]
     public function it_can_update_product(): void
     {
         $product = Product::factory()->create();
