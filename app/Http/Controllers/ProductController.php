@@ -81,4 +81,22 @@ class ProductController extends Controller
         return redirect()->route('products.index');
     }
 
+    public function increase(Product $product)
+    {
+        $product->increment('quantity'); // +1
+        return redirect()->route('products.show', $product)->with('success', 'Quantity increased.');
+    }
+
+    public function decrease(Product $product)
+    {
+        if ($product->quantity > 0) {
+            $product->decrement('quantity'); // -1
+        }
+        return redirect()->route('products.show', $product)->with('success', 'Quantity decreased.');
+    }
+
+
+
+
 }
+
