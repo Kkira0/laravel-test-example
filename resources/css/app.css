@@ -1,11 +1,73 @@
-@import 'tailwindcss';
+/* === Test line to verify CSS is loaded === */
+body {
+    font-family: sans-serif;
+    margin: 0;
+    background: #f3f4f6;
+    color: #333;
+}
 
-@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
-@source '../../storage/framework/views/*.php';
-@source '../**/*.blade.php';
-@source '../**/*.js';
+/* === Holy Grail Layout === */
+.layout {
+    display: grid;
+    grid-template-areas:
+        "header  header  header"
+        "sidebar-left main sidebar-right"
+        "footer  footer  footer";
+    grid-template-columns: 200px 1fr 200px;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+}
 
-@theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+/* === Grid area mapping === */
+.header {
+    grid-area: header;
+    background: #2563eb;
+    color: white;
+    padding: 1rem;
+}
+
+.sidebar-left {
+    grid-area: sidebar-left;
+    background: #dbeafe;
+    padding: 1rem;
+}
+
+.sidebar-right {
+    grid-area: sidebar-right;
+    background: #bfdbfe;
+    padding: 1rem;
+}
+
+.main {
+    grid-area: main;
+    background: white;
+    padding: 2rem;
+}
+
+.footer {
+    grid-area: footer;
+    background: #2563eb;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+}
+
+/* === Flexbox for navigation === */
+.nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.nav a {
+    color: #1e3a8a;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.nav a:hover {
+    text-decoration: underline;
 }
