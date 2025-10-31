@@ -22,7 +22,9 @@
         </nav>
     </aside>
 
-    <main class="main">
+    <main class="content">
+        <x-flash-success />
+        <x-flash-errors />
         {{ $slot }}
     </main>
 

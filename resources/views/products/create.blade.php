@@ -1,6 +1,9 @@
 <x-layout title="Add Product">
     <h1>Add New Product</h1>
 
+    <x-flash-success />
+    <x-flash-errors />
+
     <form action="{{ route('products.store') }}" method="POST">
         @csrf
 

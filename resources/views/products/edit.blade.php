@@ -1,6 +1,9 @@
 <x-layout :title="'Edit ' . $product->name">
     <h1>Edit Product</h1>
 
+    <x-flash-success />
+    <x-flash-errors />
+
     <form action="{{ route('products.update', $product) }}" method="POST">
         @csrf
         @method('PUT')
