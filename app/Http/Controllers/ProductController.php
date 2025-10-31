@@ -30,9 +30,11 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $validate=$request->validate([
-            'name' => 'required',
-            'description' => 'nullable',
-            'price' => 'required|numeric|min:0',
+            'name' => 'required|string',
+            'quantity' => 'required|integer|min:0',
+            'description' => 'nullable|string',
+            'expiration_date'=>'nullable|date',
+            'status' => 'required|boolean',
         ]);
         Product::create($validate);
         return redirect()->route('products.index');
@@ -61,9 +63,11 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
         $validated = $request->validate([
-            'name' => 'required',
-            'description' => 'nullable',
-            'price' => 'required|numeric|min:0',
+            'name' => 'required|string',
+            'quantity' => 'required|integer|min:0',
+            'description' => 'nullable|string',
+            'expiration_date'=>'nullable|date',
+            'status' => 'required|boolean',
         ]);
 
         $product->update($validated);

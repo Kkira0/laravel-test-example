@@ -4,7 +4,7 @@
         @foreach($products as $product)
             <li>
                 <a href="{{ route('products.show', $product) }}">
-                    {{ $product->name }} – €{{ number_format($product->price, 2) }}
+                    {{ $product->name }} – gabali {{ number_format($product->quantity) }}
                 </a>
             </li>
         @endforeach
